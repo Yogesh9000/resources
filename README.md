@@ -1,6 +1,6 @@
 # C++
 
-## Web
+## Links
 
 - [regular cast vs staic_cast vs dynamic_cast](https://stackoverflow.com/questions/28002/regular-cast-vs-static-cast-vs-dynamic-cast)
 
@@ -51,3 +51,159 @@
     return std::move(x1); // complex expression
   }
   ```
+
+# DSA
+
+## NOTES
+
+### GCD/HCF
+
+#### Methods to Find GCD
+
+There are multiple methods to find the Greatest Common Divisor (GCD) such as:
+
+- Prime Factorization Method
+- Euclid’s Division Algorithm
+- Binary GCD Algorithm (Stein's Algorithm)
+
+##### Prime Factorization Method to Find GCD
+
+The prime factorization method involves breaking each number down into its prime factors (prime numbers that multiply to give the original number).
+The GCD is found by taking the product of the lowest powers of all common prime factors.
+
+*Sample Implementaion:*
+```cpp
+std::unordered_map<int, int> primeFactorize(int num)
+{
+  std::unordered_map<int, int> factors{};
+  for (int i{2}; i < std::sqrt(num); ++i)
+  {
+    while (num % i == 0)
+    {
+      factors[i]++;
+      num = num / i;
+    }
+  }
+  if (num > 1)
+  {
+    factors[num]++;
+  }
+  return factors;
+}
+
+int gcdWithPrimFactorization(int num1, int num2)
+{
+  if (num1 == 0) return num2;
+  if (num2 == 0) return num1;
+
+  auto factor1 = primeFactorize(num1);
+  auto factor2 = primeFactorize(num2);
+  int gcd = 1;
+  for (auto [factor, count] : factor1) {
+    if (factor2.contains(factor))
+    {
+      gcd *= std::pow(factor, std::min(factor1[factor], factor2[factor]));
+    }
+  }
+  return gcd;
+}
+```
+
+##### Euclid's Division Algorithm
+
+1. Apply Euclid’s division lemma to two numbers a and b, where a > b. The division lemma gives two numbers q (quotient) and r (remainder), such that: a=bq+rwhere 0≤r<ba=bq+rwhere 0≤r<b
+2. If the remainder r = 0, then b is the GCD of a and b. If r≠0r=0, apply the division lemma again to b and r.
+3. Continue the process until the remainder is zero.
+4. When the remainder is zero, the divisor at that stage is the GCD of the given numbers.
+
+*Sample Implementaion:*
+```cpp
+int gcdUsingEuclidsDivision(int num1, int num2)
+{
+  if (num1 == 0) return num2;
+  if (num2 == 0) return num1;
+
+  if (num1 < num2) std::swap(num1, num2);
+
+  while (num1 % num2 != 0)
+  {
+    num1 = num1 % num2;
+    if (num1 < num2) std::swap(num1, num2);
+  }
+
+  return num2;
+}
+```
+
+##### Binary GCD Algorithm(aka Stein's Algorithm) 
+The algorithm finds the GCD of two nonnegative numbers u and v by repeatedly applying these identities
+
+1. gcd(u , 0)   = u                      : everything divides zero, and u is the largest number that divides u.
+2. gcd(2u , 2v) = 2 * gcd(u , v)         : 2 is a common divisor.
+3. gcd(u , 2v)  = gcd(u , v) if u is odd : 2 is then not a common divisor.
+4. gcd(u , v)   = gcd(u , v−u) if u , v odd and u ≤ v.
+
+*Sample Implementaion:*
+```cpp
+unsigned int gcdUsingSteinsAlgorithm(unsigned int num1, unsigned int num2)
+{
+  // case1: gcd(u, 0) = u
+  if (num1 == 0) return num2;
+  if (num2 == 0) return num1;
+
+  // case2: gcd(2^i * u, 2^j * v) = 2^k gcd(u, v); k = min(i, j)
+  // count the trailing zeroes in num1 and num2,
+  // number of trailing zeroes determine the maximum power of 2 that will divide a number 
+  // __builtin_ctzll is a builtin gcc/clang function to count trailing zeroes
+  unsigned int i = __builtin_ctzll(num1);
+  num1 >>= i;
+  unsigned int j = __builtin_ctzll(num2);
+  num2 >>= j;
+  unsigned int k = std::min(i, j);
+
+  while (true) { // at this point both num1 and num2 should be odd
+    if (num1 > num2) std::swap(num1, num2);
+
+    // case4: gcd(u, v) = gcd(u, v - u); u and v are odd, u <= v
+    num2 = num2 - num1;
+
+    if (num2 == 0) return num1 << k; // restore the common power of 2 that divides both num1 and num2 before returning the answer
+
+    // case3: gcd(u, 2v) = gcd(u, v); u is odd so 2 is not a common divisor
+    num2 >>= __builtin_ctzll(num2);
+  }
+}
+```
+
+### LCM
+
+> [!NOTE]
+> gcd(a, b) * lcm(a, b) = a * b
+> therefore, lcm(a, b) = (a * b) / gcd(a, b)
+
+*Sample Implementaion:*
+```cpp
+int lcm(int a, int b) {
+  int hcf{};
+  int lcm{};
+  long product = static_cast<long>(a) * b;
+  if (a == 0) hcf = b, lcm = 0;
+  if (b == 0) hcf = a, lcm = 0;
+
+  int i = __builtin_ctzl(a);
+  a >>= i;
+  int j = __builtin_ctzl(b);
+  b >>= j;
+  int k = std::min(i, j);
+  while (true)
+  {
+    if (a > b) std::swap(a, b);
+
+    b = b - a;
+
+    if (b == 0) return static_cast<int>(product / (a << k)); // divide a*b by gcd to get the lcm. interger overflow could occur here
+
+    b >>= __builtin_ctzll(b);
+  }
+}
+```
