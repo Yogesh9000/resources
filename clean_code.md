@@ -6,8 +6,8 @@
 
 * **Use intention-revealing names:**
 
-  > [!CAUTION]
-  > The names of a variable, function, or class should make the context of the code explicit.
+> [!IMPORTANT]
+> The names of a variable, function, or class should make the context of the code explicit.
 
   The name of a variable, function, or class, should answer all the big questions. It should tell you why it exists, what it does, and how it is used.
 
