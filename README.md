@@ -207,3 +207,17 @@ int lcm(int a, int b) {
   }
 }
 ```
+
+### Armstrong Numbers
+
+A number is *Armstrong Number* if it's equal to the sum of it's digit raised to the power of number of digit's in the number
+
+*Example:*
+n = 153
+*Explanation:* 1^2 + 5^3 + 3^3 = 1 + 125 + 27 = 153
+
+# Miscellaneous
+
+## Notes
+
+- [math](https://takeuforward.org/data-structure/print-all-divisors-of-a-given-number/) given two numbers a and b, if b is a divisor of a, then *a/b* is also a divisor of a.
