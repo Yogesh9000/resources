@@ -2,6 +2,9 @@
 
 ## Meaningful Names
 
+> [!NOTE]
+> One guideline is that the length of a variable name should be in proportion to its scope - global variables should have long names, local variables should have short ones.
+
 ### Some rules for creating names
 
 * **Use intention-revealing names:**
