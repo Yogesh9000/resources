@@ -54,6 +54,51 @@
 
 # DSA
 
+## Algorithms
+
+### Sorting
+
+#### [Selection Sort](https://en.wikipedia.org/wiki/Selection_sort)
+
+The algorithm divides the input list into two parts: a sorted sublist of items which is built up from left to right at the front (left) of the list and a sublist of the remaining unsorted items that occupy the rest of the list. Initially, the sorted sublist is empty and the unsorted sublist is the entire input list. The algorithm proceeds by finding the smallest (or largest, depending on sorting order) element in the unsorted sublist, exchanging (swapping) it with the leftmost unsorted element (putting it in sorted order), and moving the sublist boundaries one element to the right. 
+
+- Selection sort is an in-place comparison sorting algorithm
+- **Time Complexity:** O(n^2)
+- Selection sort can also be used on list structures that make add and remove efficient, such as a linked list
+- Selection sort implementaion involving swaps is unstable
+- Selection sort performs better than bubble sort, but insertion sort performs better than selection sort, this is because insertion sort performs fewer comparisons.
+
+**Example:**
+| Sorted Sublist       | Unsorted Sublist     | Least Element in Unsorted Sublist |
+| ---------------      | -------------------- | --------------------------------- |
+| ()                   | (12, 25, 64, 11, 22) | 11                                |
+| (11)                 | (12, 25, 64, 22)     | 12                                |
+| (11, 12)             | (25, 64, 22)         | 22                                |
+| (11, 12, 22)         | (25, 64)             | 25                                |
+| (11, 12, 22, 25)     | (64)                 | 64                                |
+| (11, 12, 22, 25, 64) | ()                   |                                   |
+
+**Sample Implementaion:**
+```cpp
+void selectionSort(std::vector<int> &vec)
+{
+  int sortedListIdx{-1};
+  for (int i{0}; i < vec.size(); ++i) {
+    std::pair minValue{0, std::numeric_limits<int>::max()};
+    for (int j{i}; j < vec.size(); ++j)
+    {
+      if (vec[j] < minValue.second)
+      {
+        minValue.first = j;
+        minValue.second = vec[j];
+      }
+    }
+    ++sortedListIdx;
+    std::swap(vec[sortedListIdx], vec[minValue.first]);
+  }
+}
+```
+
 ## NOTES
 
 ### GCD/HCF
@@ -71,7 +116,7 @@ There are multiple methods to find the Greatest Common Divisor (GCD) such as:
 The prime factorization method involves breaking each number down into its prime factors (prime numbers that multiply to give the original number).
 The GCD is found by taking the product of the lowest powers of all common prime factors.
 
-*Sample Implementaion:*
+**Sample Implementaion:**
 ```cpp
 std::unordered_map<int, int> primeFactorize(int num)
 {
@@ -116,7 +161,7 @@ int gcdWithPrimFactorization(int num1, int num2)
 3. Continue the process until the remainder is zero.
 4. When the remainder is zero, the divisor at that stage is the GCD of the given numbers.
 
-*Sample Implementaion:*
+**Sample Implementaion:**
 ```cpp
 int gcdUsingEuclidsDivision(int num1, int num2)
 {
@@ -143,7 +188,7 @@ The algorithm finds the GCD of two nonnegative numbers u and v by repeatedly app
 3. gcd(u , 2v)  = gcd(u , v) if u is odd : 2 is then not a common divisor.
 4. gcd(u , v)   = gcd(u , v−u) if u , v odd and u ≤ v.
 
-*Sample Implementaion:*
+**Sample Implementaion:**
 ```cpp
 unsigned int gcdUsingSteinsAlgorithm(unsigned int num1, unsigned int num2)
 {
@@ -181,7 +226,7 @@ unsigned int gcdUsingSteinsAlgorithm(unsigned int num1, unsigned int num2)
 > gcd(a, b) * lcm(a, b) = a * b
 > therefore, lcm(a, b) = (a * b) / gcd(a, b)
 
-*Sample Implementaion:*
+**Sample Implementaion:**
 ```cpp
 int lcm(int a, int b) {
   int hcf{};
