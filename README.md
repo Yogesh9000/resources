@@ -99,6 +99,36 @@ void selectionSort(std::vector<int> &vec)
 }
 ```
 
+#### [Bubble Sort](https://en.wikipedia.org/wiki/Bubble_sort)
+
+**Bubble sort**, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the input list element by element, comparing the current element with the one after it, swapping their values if needed. These passes through the list are repeated until no swaps have to be performed during a pass, meaning that the list has become fully sorted.
+
+- **Time Complexity:** O(n^2)
+- Bubble Sort performs poorly for real world use cases and therefore is not used as much.
+- If parallel processing is allowed, bubble sort can sort in O(n) time.
+- Bubble sort in an adaptive algorithm, that means it may perform better in cases where list is almost sorted, it may even outperform merge-sort and quick-sort.
+
+**Sample Implementation:**
+```cpp
+void bubbleSort(std::vector<int> &vec)
+{
+  for (int i{0}; i < vec.size() - 1; ++i) {
+    bool swapped{false};
+    for (int j{1}; j < vec.size(); ++j) {
+      if (vec[j - 1] > vec[j])
+      {
+        std::swap(vec[j - 1], vec[j]);
+        swapped = true;
+      }
+    }
+    if (!swapped)
+    {
+      break;
+    }
+  }
+}
+```
+
 ## NOTES
 
 ### GCD/HCF
