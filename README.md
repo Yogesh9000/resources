@@ -78,7 +78,7 @@ The algorithm divides the input list into two parts: a sorted sublist of items w
 | (11, 12, 22, 25)     | (64)                 | 64                                |
 | (11, 12, 22, 25, 64) | ()                   |                                   |
 
-**Sample Implementaion:**
+**Sample Implementation:**
 ```cpp
 void selectionSort(std::vector<int> &vec)
 {
@@ -116,7 +116,7 @@ There are multiple methods to find the Greatest Common Divisor (GCD) such as:
 The prime factorization method involves breaking each number down into its prime factors (prime numbers that multiply to give the original number).
 The GCD is found by taking the product of the lowest powers of all common prime factors.
 
-**Sample Implementaion:**
+**Sample Implementation:**
 ```cpp
 std::unordered_map<int, int> primeFactorize(int num)
 {
@@ -161,7 +161,7 @@ int gcdWithPrimFactorization(int num1, int num2)
 3. Continue the process until the remainder is zero.
 4. When the remainder is zero, the divisor at that stage is the GCD of the given numbers.
 
-**Sample Implementaion:**
+**Sample Implementation:**
 ```cpp
 int gcdUsingEuclidsDivision(int num1, int num2)
 {
@@ -188,7 +188,7 @@ The algorithm finds the GCD of two nonnegative numbers u and v by repeatedly app
 3. gcd(u , 2v)  = gcd(u , v) if u is odd : 2 is then not a common divisor.
 4. gcd(u , v)   = gcd(u , v−u) if u , v odd and u ≤ v.
 
-**Sample Implementaion:**
+**Sample Implementation:**
 ```cpp
 unsigned int gcdUsingSteinsAlgorithm(unsigned int num1, unsigned int num2)
 {
@@ -226,7 +226,7 @@ unsigned int gcdUsingSteinsAlgorithm(unsigned int num1, unsigned int num2)
 > gcd(a, b) * lcm(a, b) = a * b
 > therefore, lcm(a, b) = (a * b) / gcd(a, b)
 
-**Sample Implementaion:**
+**Sample Implementation:**
 ```cpp
 int lcm(int a, int b) {
   int hcf{};
