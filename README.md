@@ -326,3 +326,7 @@ n = 153
 ## Notes
 
 - [math](https://takeuforward.org/data-structure/print-all-divisors-of-a-given-number/) given two numbers a and b, if b is a divisor of a, then *a/b* is also a divisor of a.
+
+## Links
+
+- [Your problem with Vim is that you don't grok vi](https://stackoverflow.com/questions/1218390/what-is-your-most-productive-shortcut-with-vim/1220118#1220118)
