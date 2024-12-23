@@ -129,6 +129,36 @@ void bubbleSort(std::vector<int> &vec)
 }
 ```
 
+#### [Insertion Sort](https://en.wikipedia.org/wiki/Insertion_sort)
+
+Insertion sort iterates, consuming one input element each repetition, and grows a sorted output list. At each iteration, insertion sort removes one element from the input data, finds the location it belongs within the sorted list, and inserts it there. It repeats until no input elements remain. 
+
+- **Time Complexity:** O(n^2)
+- **Advantages:**
+  - simple implementaion
+  - efficient for small data sets and more efficient than bubble sort, selection sort
+  - adaptive, i.e, efficient for already substantially sorted lists, time complexity is O(kn) where k is distance of each element from its sorted position
+  - stable
+  - in-place
+  - online, i.e, sort list as it receives input
+- GCC and Clang's implementation of **std::sort** uses an hybrid of merge-sort/quick-sort/introsort and insertion sort, switching to insertion sort for small enough list sizes.
+- insertion sort is more efficient than selection sort, but performs more writes compared to selection sort.
+
+**Sample implementation:**
+```cpp
+void insertionSort(std::vector<int> &vec)
+{
+  for (int i{1}; i < vec.size(); ++i) {
+    int j{i};
+    while (j > 0 && vec[j] < vec[j - 1])
+    {
+      std::swap(vec[j], vec[j - 1]);
+      --j;
+    }
+  }
+}
+ ```
+
 ## NOTES
 
 ### GCD/HCF
