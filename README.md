@@ -65,7 +65,7 @@ The algorithm divides the input list into two parts: a sorted sublist of items w
 - Selection sort is an in-place comparison sorting algorithm
 - **Time Complexity:** O(n^2)
 - Selection sort can also be used on list structures that make add and remove efficient, such as a linked list
-- Selection sort implementaion involving swaps is unstable
+- Selection sort implementation involving swaps is unstable
 - Selection sort performs better than bubble sort, but insertion sort performs better than selection sort, this is because insertion sort performs fewer comparisons.
 
 **Example:**
@@ -135,7 +135,7 @@ Insertion sort iterates, consuming one input element each repetition, and grows 
 
 - **Time Complexity:** O(n^2)
 - **Advantages:**
-  - simple implementaion
+  - simple implementation
   - efficient for small data sets and more efficient than bubble sort, selection sort
   - adaptive, i.e, efficient for already substantially sorted lists, time complexity is O(kn) where k is distance of each element from its sorted position
   - stable
@@ -158,6 +158,112 @@ void insertionSort(std::vector<int> &vec)
   }
 }
  ```
+
+#### [ Merge Sort](https://en.wikipedia.org/wiki/Merge_sort)
+
+Conceptually, a merge sort works as follows:
+
+1. Divide the unsorted list into n sub-lists, each containing one element (a list of one element is considered sorted).
+2. Repeatedly merge sublists to produce new sorted sublists until there is only one sublist remaining. This will be the sorted list.
+
+- **Time Complexity:** O(nlogn)
+- Merge Sort is a stable sorting algorithm
+- Merge sort is suited for sorting linked list
+- Merge sort can be parallelized
+- Merge sort's most common implementation does not sort in place, i.e, it require's extra memory
+
+**Sample Implementation:**
+
+1. **Top Down Implementation:**
+```cpp
+void TopDownMerge(std::vector<int> &B, int begin, int middle, int end, std::vector<int> &A)
+{
+  int i = begin;
+  int j = middle;
+  for (int k = begin; k < end; ++k)
+  {
+    if (i < middle && (j >= end || A[i] <= A[j]))
+    {
+      B[k] = A[i];
+      ++i;
+    }
+    else
+    {
+      B[k] = A[j];
+      ++j;
+    }
+  }
+}
+
+void TopDownSplitMerge(std::vector<int> &B, int begin, int end, std::vector<int> &A)
+{
+  if (end - begin <= 1) return;
+  
+  int middle = begin + ((end - begin) / 2);
+
+  TopDownSplitMerge(A, begin, middle, B);
+  TopDownSplitMerge(A, middle, end, B);
+
+  TopDownMerge(B, begin, middle, end, A);
+}
+
+// vec will be sorted when this routine ends
+// The copy back step is avoided with alternating the direction of the merge with each level of recursion in topDownSplitMerge
+void MergeSort(std::vector<int> &vec)
+{
+  std::vector b(vec);
+  TopDownSplitMerge(vec, 0, static_cast<int>(vec.size()), b);
+}
+```
+
+2. **Bottom Up Implementation (Psuedocode):**
+```cpp
+// array A[] has the items to sort; array B[] is a work array
+void BottomUpMergeSort(A[], B[], n)
+{
+  // Each 1-element run in A is already "sorted".
+  // Make successively longer sorted runs of length 2, 4, 8, 16... until the whole array is sorted.
+  for (width = 1; width < n; width = 2 * width)
+  {
+    // Array A is full of runs of length width.
+    for (i = 0; i < n; i = i + 2 * width)
+    {
+      // Merge two runs: A[i:i+width-1] and A[i+width:i+2*width-1] to B[]
+      // or copy A[i:n-1] to B[] ( if (i+width >= n) )
+      BottomUpMerge(A, i, min(i+width, n), min(i+2*width, n), B);
+    }
+    // Now work array B is full of runs of length 2*width.
+    // Copy array B to array A for the next iteration.
+    // A more efficient implementation would swap the roles of A and B.
+    CopyArray(B, A, n);
+    // Now array A is full of runs of length 2*width.
+  }
+}
+
+// Left run is A[iLeft :iRight-1].
+// Right run is A[iRight:iEnd-1  ].
+void BottomUpMerge(A[], iLeft, iRight, iEnd, B[])
+{
+  i = iLeft, j = iRight;
+  // While there are elements in the left or right runs...
+  for (k = iLeft; k < iEnd; k++) {
+    // If left run head exists and is <= existing right run head.
+    if (i < iRight && (j >= iEnd || A[i] <= A[j])) {
+      B[k] = A[i];
+      i = i + 1;
+    } else {
+      B[k] = A[j];
+      j = j + 1;    
+    }
+  } 
+}
+
+void CopyArray(B[], A[], n)
+{
+  for (i = 0; i < n; i++)
+    A[i] = B[i];
+}
+```
 
 ## NOTES
 
