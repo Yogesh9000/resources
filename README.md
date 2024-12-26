@@ -265,6 +265,50 @@ void CopyArray(B[], A[], n)
 }
 ```
 
+#### [Quick Sort](https://en.wikipedia.org/wiki/Quicksort)
+
+Quicksort is a divide-and-conquer algorithm. It works by selecting a **'pivot'** element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. For this reason, it is sometimes called partition-exchange sort. The sub-arrays are then sorted recursively. This can be done in-place, requiring small additional amounts of memory to perform the sorting. 
+
+- **Time Complexity:** O(nlogn) 
+- The worst case time complexity of quick-sort is **O(n^2)**
+- Most implementations of quicksort are not **stable**  
+- Most implementations of quicksort are **in-place**  
+- Quick-Sort can be implemented with a space complexity of O(logn)
+
+**Sample Implementation:**
+```cpp
+int Partition(std::vector<int> &vec, int begin, int end)
+{
+  int middle = begin + ((end - begin) / 2);
+  int pivot = vec[middle];
+  int i = begin;
+  std::swap(vec[middle], vec[end - 1]);
+  for (int j{begin}; j < end - 1; ++j) {
+    if (vec[j] <= pivot)
+    {
+      std::swap(vec[i], vec[j]);
+      ++i;
+    }
+  }
+  std::swap(vec[i], vec[end - 1]);
+  return i;
+}
+
+void QuickSort(std::vector<int> &vec, int begin, int end)
+{
+  if (end - begin <= 1) return;
+
+  int pivot = Partition(vec, begin, end);
+  QuickSort(vec, begin, pivot);
+  QuickSort(vec, pivot + 1, end);
+}
+
+void QuickSort(std::vector<int> &vec)
+{
+  QuickSort(vec, 0, static_cast<int>(vec.size()));
+}
+```
+
 ## NOTES
 
 ### GCD/HCF
