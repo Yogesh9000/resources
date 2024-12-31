@@ -469,7 +469,7 @@ A number is *Armstrong Number* if it's equal to the sum of it's digit raised to 
 
 *Example:*
 n = 153
-*Explanation:* 1^2 + 5^3 + 3^3 = 1 + 125 + 27 = 153
+*Explanation:* 1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153
 
 # Miscellaneous
 
