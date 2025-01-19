@@ -112,3 +112,14 @@
 * **Use Problem Domain Names:** 
 
   When there is no **programmer-eese** term, use names from problem domain.
+
+## Functions
+
+* **Small:**
+  
+  The ﬁrst rule of functions is that they should be small. The second rule of functions is that they should be smaller than that.
+
+* **Do One Thing:** 
+
+  Functions should do one thing. They should do it well. They should do it only.
+  > One way to know that a function is doing more than “one thing” is if you can extract another function from it with a name that is not merely a restatement of its implementation
