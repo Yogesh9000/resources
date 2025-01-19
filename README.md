@@ -73,6 +73,13 @@
 
 ## Algorithms
 
+### Useful Exisiting Algorithms
+
+- [Dutch National flag algorithm](https://en.wikipedia.org/wiki/Dutch_national_flag_problem)
+- [Boyer–Moore majority vote algorithm](https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm):
+  - Useful for finding the frequency of the **majority**(element appearing more than half times in sequence) element of a sequence.
+  - Does not work if no majority element exist's, i.e no element with frequency > n/2, wher n is length of sequence.
+
 ### Sorting
 
 #### [Selection Sort](https://en.wikipedia.org/wiki/Selection_sort)
@@ -493,6 +500,8 @@ n = 153
 ## Notes
 
 - [math](https://takeuforward.org/data-structure/print-all-divisors-of-a-given-number/) given two numbers a and b, if b is a divisor of a, then *a/b* is also a divisor of a.
+- [math] xor of a number with itself is 0. Example `a ^ a = 0`
+- [math] xor of a number with 0 is itself. Example `a ^ 0 = a`
 
 ## Links
 
