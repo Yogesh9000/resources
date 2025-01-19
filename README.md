@@ -79,6 +79,7 @@
 - [Boyer–Moore majority vote algorithm](https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm):
   - Useful for finding the frequency of the **majority**(element appearing more than half times in sequence) element of a sequence.
   - Does not work if no majority element exist's, i.e no element with frequency > n/2, wher n is length of sequence.
+- [Kadane's Algorithm](https://en.wikipedia.org/wiki/Maximum_subarray_problem#Kadane's_algorithm)
 
 ### Sorting
 
