@@ -1,3 +1,7 @@
+# Notes
+
+- For problems involving finding subbarray which satisfies certain condition there is a good chance that prefix sum might help.
+
 # LEETCODE
 
 ## [check-if-array-is-sorted-and-rotated](https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/submissions/1494169461/)
@@ -155,3 +159,9 @@ std::vector<int> majorityElement(std::vector<int> &nums)
 
 - Simple approach is to keep track of frequency and then return elements with frequency more than n/3
 - Since there can be atmost 2 elements with frequency more than n/3   we can use a modified version of [Boyer–Moore majority vote algorithm](https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm)
+
+## [3Sum](https://leetcode.com/problems/3sum/description/) and [4Sum](https://leetcode.com/problems/4sum/description/)
+
+- These problem comparison to determine whether we choosing unique set for answer.
+- For such problems involving comparison there is a good chance that the minimum time complexity algorithm possible runs in O(n^2), so look at the input size as a hint.
+- Also try to see if sorting or other operations could possible remove the need to do certain operations.

@@ -3,6 +3,7 @@
 ## Links
 
 - [regular cast vs staic_cast vs dynamic_cast](https://stackoverflow.com/questions/28002/regular-cast-vs-static-cast-vs-dynamic-cast)
+- [terminal color](https://gist.github.com/Kielx/2917687bc30f567d45e15a4577772b02)
 
 ## Notes
 
@@ -80,6 +81,7 @@
   - Useful for finding the frequency of the **majority**(element appearing more than half times in sequence) element of a sequence.
   - Does not work if no majority element exist's, i.e no element with frequency > n/2, wher n is length of sequence.
 - [Kadane's Algorithm](https://en.wikipedia.org/wiki/Maximum_subarray_problem#Kadane's_algorithm)
+- [Binary Search](https://www.youtube.com/watch?v=GU7DpgHINWQ&ab_channel=ErrichtoAlgorithms)
 
 ### Sorting
 
