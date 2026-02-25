@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "80776e7794ea24d3",
+        "id": "9cdef4557d11618e",
         "type": "tabs",
         "children": [
           {
-            "id": "4314f360201beadc",
+            "id": "897208003b3af993",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "cp/maths.md",
-                "mode": "preview",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "maths"
+              "title": "New tab"
             }
           }
         ]
@@ -78,8 +74,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "40e8b3067ffe433a",
@@ -158,6 +153,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": true,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -166,9 +162,40 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4314f360201beadc",
+  "active": "95baf1c86b659a50",
   "lastOpenFiles": [
+    "dsa/Notes.md",
+    "clean_code.md",
+    "dsa/img/subsequence.png",
+    "dsa/Graph.md",
+    "dsa/Two Pointers.md",
+    "dsa.md",
+    "Practice Path.md",
+    "Arrays.md",
+    "Striver/Binary Trees/Binary Tree.md",
+    "dsa/img/subsequence.png.~tmp",
+    "dsa/img",
+    "dsa",
+    "Open Data Structures/Array Based List and Queue.md",
+    "Open Data Structures/Interfaces.md",
+    "Untitled.md",
+    "Untitled.canvas",
+    "2025-11-29.md",
     "README.md",
+    "Striver/imgs/degenerate_binary_tree.png",
+    "Striver/imgs/degenerate_binary_tree.png.~tmp",
+    "Striver/imgs/complete_binary_tree.png",
+    "Striver/imgs/balanced_binary_tree.png.~tmp",
+    "Striver/imgs/balanced_binary_tree.png",
+    "Striver/imgs/perfect_binary_tree.png",
+    "Striver/imgs/perfect_binary_tree.png.~tmp",
+    "Untitled.base",
+    "Striver/imgs/full_binary_tree.png",
+    "Striver/imgs/complete_binary_tree.png.~tmp",
+    "Striver/imgs",
+    "Striver/Binary Trees",
+    "Gameboy/PPU.md",
+    "cp/maths.md",
     "Welcome.md"
   ]
 }
